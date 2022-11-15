@@ -16,12 +16,14 @@ namespace HKZ
         [SerializeField] private float jumpForce = 7.0f;
         [SerializeField] private float moveSpeed = 5.0f;
         [SerializeField] private ParticleSystem jumpVFX;
+        [SerializeField] private AudioClip jumpSFX;
 
         public override void Enter()
         {
             base.Enter();
             input.HasJumpInputBuffer = false;
             player.SetVelocityY(jumpForce);
+            player.VoicePlayer.PlayOneShot(jumpSFX);
             Instantiate(jumpVFX, player.transform.position, Quaternion.identity);
         }
         public override void LogicUpdate()

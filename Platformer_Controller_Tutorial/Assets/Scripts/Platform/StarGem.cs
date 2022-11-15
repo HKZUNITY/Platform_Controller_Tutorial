@@ -36,7 +36,9 @@ namespace HKZ
                 player.CanAirJump = true;
                 collider.enabled = false;
                 meshRenderer.enabled = false;
-                audioSource.PlayOneShot(pickUpSFX);
+
+                SoundEffectsPlayer.AudioSource.PlayOneShot(pickUpSFX);
+                //audioSource.PlayOneShot(pickUpSFX);
                 Instantiate(pickUpVFX, transform.position, Quaternion.identity); 
 
                 //Invoke(nameof(Reset), resetTime);

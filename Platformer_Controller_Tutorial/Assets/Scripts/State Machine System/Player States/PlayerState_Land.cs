@@ -14,14 +14,22 @@ namespace HKZ
     public class PlayerState_Land : PlayerState
     {
         [SerializeField] private float stiffTime = 0.2f;
+        [SerializeField] private ParticleSystem landVFX;
+
         public override void Enter()
         {
             base.Enter();
 
             player.SetVelocity(Vector3.zero);
+
+            Instantiate(landVFX, player.transform.position, Quaternion.identity);
         }
         public override void LogicUpdate()
         {
+            if (player.Victory)
+            {
+                stateMachine.SwicthState(typeof(PlayerState_Victory));
+            }
             if (input.HasJumpInputBuffer || input.Jump)
             {
                 stateMachine.SwicthState(typeof(PlayerState_JumpUp));

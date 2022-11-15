@@ -53,6 +53,11 @@ namespace HKZ
         //    GUI.Label(rect, message, style);
         //}
 
+        public void DisableGameplayInputs()
+        {
+            playerInputAction.GamePlay.Disable();
+        }
+
         public void EnableGamePlayInputs()
         {
             playerInputAction.GamePlay.Enable();
